@@ -31,4 +31,4 @@ def process_data(packet):
             print(f"\nPossible username/password ->> {load_data}\n")
 
 
-sniff("wlp3s0")
+sniff("your intereface")
